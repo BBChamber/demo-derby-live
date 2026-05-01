@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Demo Derby Live</title>
+  <style>
+    body {
+      font-family: system-ui, sans-serif;
+      background: #f9fafb;
+      margin: 0;
+      padding: 16px;
+    }
+    h1, h2 {
+      text-align: center;
+    }
+    .card {
+      background: white;
+      padding: 16px;
+      margin-bottom: 12px;
+      border-radius: 12px;
+      box-shadow: 0 2px 6px rgba(0,0,0,.1);
+    }
+    .sponsor {
+      border: 2px solid gold;
+      text-align: center;
+    }
+    button {
+      padding: 8px 12px;
+      border-radius: 8px;
+      border: none;
+      background: #2563eb;
+      color: white;
+      font-size: 16px;
+    }
+    .vote-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    footer {
+      text-align: center;
+      font-size: 12px;
+      color: #666;
+      margin-top: 24px;
+    }
+  </style>
+</head>
+<body>
+
+<h1>Demo Derby Live</h1>
+
+<h2>Event Sponsors</h2>
+
+<div class="card sponsor">
+  <strong>Smith Auto Repair</strong><br />
+  <em>Title Sponsor</em><br />
+  Proudly sponsoring tonight's Demo Derby
+</div>
+
+<div class="card sponsor">
+  <strong>Midwest Towing</strong><br />
+  <em>Heat Sponsor</em><br />
+  Sponsoring Heat 1
+</div>
+
+<h2>Drivers</h2>
+
+<div class="card">
+  <strong>Driver 1</strong><br />
+  Car #12 · Kearney, NE<br />
+  First-time competitor
+</div>
+
+<div class="card">
+  <strong>Driver 2</strong><br />
+  Car #7 · Grand Island, NE<br />
+  Fan favorite from last year
+</div>
+
+<h2>Crowd Favorite Voting</h2>
+
+<div class="card vote-row">
+  <span>Driver 1</span>
+  <button onclick="vote('Driver 1')">Vote</button>
+</div>
+
+<div class="card vote-row">
+  <span>Driver 2</span>
+  <button onclick="vote('Driver 2')">Vote</button>
+</div>
+
+<div id="results"></div>
+
+<footer>
+  Sponsors loaded pre‑event · Phone‑friendly during show
+</footer>
+
+<script>
+  const votes = {};
+  function vote(name) {
+    votes[name] = (votes[name] || 0) + 1;
+    document.getElementById("results").innerHTML =
+      Object.entries(votes)
+        .map(([name, count]) => `<p>${name}: ${count}</p>`)
+        .join("");
+  }
+</script>
+
+</body>
+</html>
